@@ -159,7 +159,6 @@
 				{/each}
 			</div>
 		</div>
-		<div class="visual-anchor">dd</div>
 		{#if currentStage === 'scrolling'}
 			<div class="scroll-hint" transition:fade={{ duration: 200 }}>
 				<p>Scroll down</p>
