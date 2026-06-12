@@ -15,7 +15,7 @@ export default {
       strict: true
     }),
     paths: {
-			base: process.env.NODE_ENV === 'production' ? '/your-repository-name' : ''
-		}
+      base: process.env.NODE_ENV === 'production' ? '/romantic-gestures' : ''
+    }
   }
 };
