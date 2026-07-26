@@ -20,6 +20,9 @@ jobs:
     name: Build static SvelteKit site
     runs-on: ubuntu-latest
 
+    env:
+      PUBLIC_RESPONSE_ENDPOINT: ${{ vars.PUBLIC_RESPONSE_ENDPOINT }}
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v7

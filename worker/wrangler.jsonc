@@ -1,0 +1,28 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+
+  "name": "date-invitation-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-26",
+
+  // Gives you:
+  // https://date-invitation-api.YOUR-SUBDOMAIN.workers.dev
+  "workers_dev": true,
+
+  "vars": {
+    "INVITE_ID": "july-date-2026",
+
+    // Use only the origin, without the repository path.
+    //
+    // Correct:
+    // https://your-name.github.io
+    //
+    // Incorrect:
+    // https://your-name.github.io/date-invitation
+    "ALLOWED_ORIGIN": "https://toloveyou.github.io",
+  },
+
+  "secrets": {
+    "required": ["DISCORD_WEBHOOK_URL"],
+  },
+}

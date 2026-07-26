@@ -66,7 +66,7 @@ export interface InvitationCopy {
   pickerPrompt: string;
   dateLegend: string;
   timeLegend: string;
-  chooseDayFirst: string;
+chooseDayFirst: string;
   passedLabel: string;
   midnightAfter: string;
   pausedMessage: string;

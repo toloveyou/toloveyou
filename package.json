@@ -16,7 +16,10 @@
     "verify": "npm run check && npm run check:functions && npm run build",
     "cf:types": "wrangler types --path='./functions/types.d.ts'",
     "cf:dev": "npm run build && wrangler pages dev build",
-    "cf:deploy": "npm run build && wrangler pages deploy build"
+    "cf:deploy": "npm run build && wrangler pages deploy build",
+    "worker:dev": "wrangler dev --config worker/wrangler.jsonc",
+    "worker:deploy": "wrangler deploy --config worker/wrangler.jsonc",
+    "worker:secret": "wrangler secret put DISCORD_WEBHOOK_URL --config worker/wrangler.jsonc"
   },
   "dependencies": {
     "@threlte/core": "8.5.16",

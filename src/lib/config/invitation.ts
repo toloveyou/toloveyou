@@ -1,3 +1,4 @@
+import { PUBLIC_RESPONSE_ENDPOINT } from '$env/static/public';
 import type { InvitationDateOption } from '$lib/types/invitation';
 
 export const invitationConfig = {
@@ -7,7 +8,9 @@ export const invitationConfig = {
   revealDelayMs: 2_000,
   autoSubmitDelayMs: 3_000,
   finalFaceThreshold: 0.68,
-  endpoint: '/api/respond',
+
+  endpoint: PUBLIC_RESPONSE_ENDPOINT,
+
   dates: [
     {
       id: '2026-07-26',
