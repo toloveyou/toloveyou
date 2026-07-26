@@ -1,0 +1,41 @@
+<script lang="ts">
+  import InvitationExperience from '$lib/components/invitation/InvitationExperience.svelte';
+  import type { InvitationCopy } from '$lib/types/invitation';
+
+  // Primary invitation copy lives in this mdsvex content entry.
+  const copy = {
+    scrollCue: 'scroll',
+    prismFaces: ['when', 'is our', 'date?', 'soon'],
+    questionPrefix: 'when is our',
+    questionFinal: 'date?',
+    pickerPrompt: 'pick the moment that feels right',
+    dateLegend: 'day',
+    timeLegend: 'time',
+    chooseDayFirst: 'choose a day first',
+    passedLabel: 'passed',
+    midnightAfter: 'midnight after',
+    pausedMessage: 'not sent — change the time, or send it when you are ready',
+    confirmation: {
+      pendingPrefix: 'sending',
+      undo: 'undo',
+      sendNow: 'send now',
+      sending: 'sending your answer',
+      successTitle: 'Perfect. It’s a date.',
+      successNote: 'I’ll take it from here.',
+      changeChoice: 'change my choice',
+      retry: 'try again'
+    },
+    closing: 'just us.'
+  } satisfies InvitationCopy;
+</script>
+
+<svelte:head>
+  <title>when is our date?</title>
+  <meta
+    name="description"
+    content="A small invitation with one important question."
+  />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+</svelte:head>
+
+<InvitationExperience {copy} />

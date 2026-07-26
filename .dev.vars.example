@@ -1,0 +1,4 @@
+# Copy this file to .dev.vars for local Cloudflare Pages Function testing.
+DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/REPLACE_ME/REPLACE_ME
+INVITE_ID=july-date-2026
+ALLOWED_ORIGIN=http://localhost:8788

@@ -1,0 +1,44 @@
+{
+  "name": "date-invitation",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "check:functions": "tsc -p functions/tsconfig.json --noEmit",
+    "verify": "npm run check && npm run check:functions && npm run build",
+    "cf:types": "wrangler types --path='./functions/types.d.ts'",
+    "cf:dev": "npm run build && wrangler pages dev build",
+    "cf:deploy": "npm run build && wrangler pages deploy build"
+  },
+  "dependencies": {
+    "@threlte/core": "8.5.16",
+    "@threlte/extras": "9.21.0",
+    "three": "0.185.1"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "3.0.10",
+    "@sveltejs/kit": "2.70.1",
+    "@sveltejs/vite-plugin-svelte": "7.2.0",
+    "@types/three": "0.185.1",
+    "mdsvex": "0.12.8",
+    "sass": "^1.102.0",
+    "svelte": "5.56.8",
+    "svelte-check": "4.7.3",
+    "typescript": "6.0.3",
+    "vite": "8.1.5",
+    "wrangler": "4.114.0"
+  },
+  "allowScripts": {
+    "workerd@1.20260722.1": true,
+    "@parcel/watcher@2.6.0": true,
+    "esbuild@0.28.1": true
+  }
+}
