@@ -1,0 +1,72 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build static SvelteKit site
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+
+      - name: Configure GitHub Pages for SvelteKit
+        uses: actions/configure-pages@v6
+        with:
+          static_site_generator: sveltekit
+          generator_config_file: ./svelte.config.js
+
+      - name: Install dependencies from lockfile
+        if: ${{ hashFiles('package-lock.json') != '' }}
+        run: npm ci
+
+      - name: Install dependencies without lockfile
+        if: ${{ hashFiles('package-lock.json') == '' }}
+        run: npm install --no-audit --no-fund
+
+      - name: Check Svelte and TypeScript
+        run: npm run check
+
+      - name: Build prerendered site
+        run: npm run build
+
+      - name: Verify static entry point
+        run: test -f build/index.html
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./build
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy GitHub Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v5
